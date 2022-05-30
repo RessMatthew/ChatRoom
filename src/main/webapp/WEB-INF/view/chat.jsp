@@ -4,9 +4,11 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>多人聊天室</title>
+		<title>在线客服</title>
 		<script src="<%=path%>/static/plugins/jquery/jquery-2.1.4.min.js"></script>
 		<script src="<%=path%>/static/plugins/layer/layer.js"></script>
+		<link href="<%=path%>/static/source/css/chat.css" rel='stylesheet' type='text/css' />
+
 	</head>
 	<body >
 		<script type="text/javascript">
@@ -20,17 +22,20 @@
 				});
 				url = _path + '/user/login';
 				</c:if>
-				layer.open({
+				var index = layer.open({
 					id: 'chat-frame',
 					type: 2,
-					title: '多人聊天室',
+					title: '在线客服',
 					shadeClose: false,
 					shade: 0.2,
+					skin: 'myskin',
 					closeBtn: 0, 
 					maxmin: true,
-					area: ['65%', '80%'],
+					offset: 't',
+					area: ['100%', '100%'],
 					content: url
 				});
+				layer.full(index);
 			});
 			
 			//关闭浏览器提示信息

@@ -3,7 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <header class="am-topbar admin-header">
     <div class="am-topbar-brand">
-        <i class="am-icon-qq"></i> <strong>网页聊天室</strong> <small></small>
+        <i class="am-icon-qq"></i> <strong>在线客服</strong> <small></small>
     </div>
     <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
     <div class="am-collapse am-topbar-collapse" id="topbar-collapse">

@@ -34,7 +34,8 @@ ul {
   width: 260px;
   min-height: 100%;
   float: left;
-  border-right: 1px solid #cecece;
+  background: #a1afc9;
+  border-right: 1px solid #a1afc9;
 }
 
 .admin-sidebar-list {
@@ -53,8 +54,8 @@ ul {
 .admin-sidebar-sub {
   margin-top: 0;
   margin-bottom: 0;
-  box-shadow: 0 16px 8px -15px #e2e2e2 inset;
-  background: #ececec;
+  box-shadow: 0 16px 8px -15px #a1afc9 inset;
+  background: #a1afc9;
   padding-left: 24px;
 }
 
@@ -70,7 +71,7 @@ ul {
   width: auto;
   overflow: hidden;
   height: 100%;
-  background: #fff;
+  background: #a1afc9;
 }
 
 .admin-content-list {
@@ -171,7 +172,7 @@ ul {
   .admin-sidebar {
     display: block;
     position: static;
-    background: none;
+    background: #a1afc9;
   }
 
   .admin-offcanvas-bar {

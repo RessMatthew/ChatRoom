@@ -6,22 +6,23 @@
 %>
 <html>
 <head>
-	<title>多人聊天室</title>
+	<title>在线客服</title>
 	<jsp:include page="include/resource.jsp"/>
 	<link href="${ctx}/static/plugins/face/css/smohan.face.css" type="text/css" rel="stylesheet" />
 	<script type="text/javascript">var WEB_URL = '<%=path%>';</script>
 	<script type="text/javascript" src="${ctx}/static/plugins/face/js/smohan.face.js" charset="utf-8"></script>
 	<script src="${ctx}/static/plugins/sockjs/sockjs.js"></script>
 	<script src="${ctx}/static/plugins/hotkeys/jquery.hotkeys.js"></script>
+	<link href="<%=path%>/static/source/css/win.css" rel='stylesheet' type='text/css' />
 </head>
 <body>
 <div class="am-cf admin-main">
-	<jsp:include page="include/leftbar.jsp"/>
+<%--	<jsp:include page="include/leftbar.jsp"/>--%>
 	<!-- content start -->
 	<div class="admin-content">
-		<div class="" style="width: 65%;float:left;">
+		<div class="" style="width: 100%;float:left;">
 			<!-- 聊天区 -->
-			<div class="am-scrollable-vertical" id="chat-view" style="height:50%;">
+			<div class="am-scrollable-vertical" id="chat-view" style="height:70%;">
 				<!-- 消息列表 -->
 				<ul class="am-comments-list am-comments-list-flip" id="chat"></ul>
 			</div>
@@ -35,24 +36,26 @@
 			</div>
 			
 			<!-- 接收者 -->
-			<div class="" style="float: left">
-				<p class="am-kai">&nbsp;@ : <span id="sendto">全体成员</span>&nbsp;&nbsp;&nbsp;&nbsp;<button class="am-btn am-btn-xs am-btn-fail" onclick="resetSend2All();">恢复默认（Ctrl+r）</button></p>
-			</div>
-			
+<%--			<div class="" style="float: left">--%>
+<%--				<p class="am-kai">&nbsp;@ : <span id="sendto">在线客服</span>&nbsp;&nbsp;&nbsp;&nbsp;<button class="am-btn am-btn-xs am-btn-fail" onclick="resetSend2All();">恢复默认（Ctrl+r）</button></p>--%>
+<%--			</div>--%>
+<%--			--%>
 			<!-- 操作按钮区 -->
 			<div class="am-btn-group am-btn-group-xs" style="float:right;">
-				<button class="am-btn am-btn-default" type="button" onclick="clearConsole()"><span class="am-icon-paint-brush"></span> 清屏(Ctr+c)</button>
-				<button class="am-btn am-btn-default" type="button" onclick="sendMessage()"><span class="am-icon-send"></span> 发送 (+Enter)</button>
+				<button id="qpbtn" class="am-btn am-btn-default" type="button" onclick="clearConsole()"><span class="am-icon-paint-brush"></span> 清屏(Ctr+c)</button>
+				<button id="fsbtn" class="am-btn am-btn-default" type="button" onclick="sendMessage()"><span class="am-icon-send"></span> 发送 (+Enter)</button>
 			</div>
 		</div>
 		
 		<!-- 在线用户列表区 -->
-		<div class="am-panel am-panel-default" style="float:right;width: 35%;">
-			<div class="am-panel-hd">
-				<h3 class="am-panel-title">在线聊天室  <span id="onlinenum" class="am-badge am-badge-warning am-radius" style="border: 50%;"></span> </h3>
-			</div>
-			<ul class="am-list am-list-static am-list-striped" id="list"></ul>
-		</div>
+<%--		<div class="am-panel am-panel-default" style="float:right;width: 35%;">--%>
+<%--			<div class="am-panel-hd">--%>
+<%--				<h3 class="am-panel-title">在线客服<span id="onlinenum" class="am-badge am-badge-warning am-radius" style="border: 50%;"></span> </h3>--%>
+<%--			</div>--%>
+<%--			<ul class="am-list am-list-static am-list-striped" id="list"></ul>--%>
+<%--		</div>--%>
+
+
 	</div>
 	<!-- content end -->
 </div>
@@ -104,7 +107,7 @@
 		});
 
 		// 初始化聊天群
-		$("#message").attr("placeholder", "与全体成员已建立聊天通道,等待输入中...");
+		$("#message").attr("placeholder", "与在线客服已建立聊天通道,等待输入中...");
 	});
 
 	// 提示信息
@@ -163,8 +166,8 @@
 	
 	// 恢复重置
 	function resetSend2All() {
-		$('#sendto').text('全体成员');
-		$('#message').attr('placeholder', '与全体成员已建立聊天通道,等待输入中...');
+		$('#sendto').text('在线客服');
+		$('#message').attr('placeholder', '与在线客服已建立聊天通道,等待输入中...');
 	}
 
 	// 回车事件
@@ -277,7 +280,7 @@
 			return;
 		}
 		var message = $("#message").val();
-		var to = $("#sendto").text() == "全体成员" ? "" : $("#sendto").text();
+		var to = $("#sendto").text() == "在线客服" ? "" : $("#sendto").text();
 		if (message == null || message == "") {
 			layer.msg("发送内容不能为空!", {
 				offset : 0,
@@ -350,12 +353,12 @@
 	 */
 	function showChat(message) {
 		// alert("接受到数据：" + message.content);/
-		var to = message.to == null || message.to == "" ? "全体成员" : message.to; //获取接收人
+		var to = message.to == null || message.to == "" ? "在线客服" : message.to; //获取接收人
 		var isSef = '${userid}' == message.from ? "am-comment-flip" : ""; //如果是自己则显示在右边,他人信息显示在左边
 		var isMyselef = '${userid}' == message.from ? "我" : message.from;
 		var isTO = '${userid}' == message.to ? "我" : message.to;
 		if (isTO == null || '' == isTO) {
-			isTO = "全体成员";
+			isTO = "在线客服";
 		}
 
 		var html = "<li class=\"am-comment " + isSef + " am-comment-primary\"><a href=\"#link-to-user-home\"><img width=\"48\" height=\"48\" class=\"am-comment-avatar\" alt=\"\" src=\""
@@ -379,9 +382,9 @@
 			$("#message").attr("placeholder", '与' + message.from + "已建立聊天通道,等待输入中...");
 		}
 		
-		if (isTO == "全体成员") {
-			$("#sendto").text('全体成员');
-			$("#message").attr("placeholder", '与全体成员已建立聊天通道,等待输入中...');
+		if (isTO == "在线客服") {
+			$("#sendto").text('在线客服');
+			$("#message").attr("placeholder", '与在线客服已建立聊天通道,等待输入中...');
 		}
 
 		var chat = $("#chat-view");
@@ -422,7 +425,7 @@
 
 	// 重置@人聊天
 	function resetSendTo(list) {
-		var to = $("#sendto").text() == "全体成员" ? "" : $("#sendto").text();
+		var to = $("#sendto").text() == "在线客服" ? "" : $("#sendto").text();
 		if (to != "") {
 			var tempArray = new Array();
 			var users = to.split(",");
@@ -433,7 +436,7 @@
 				}
 			}
 			if (tempArray.length == 0) {
-				$("#message").attr("placeholder", "与全体成员已建立聊天通道,等待输入中...");
+				$("#message").attr("placeholder", "与在线客服已建立聊天通道,等待输入中...");
 			} else {
 				$("#sendto").text('');
 				sendto.text(tempArray.join(','));
@@ -447,7 +450,7 @@
 	 */
 	function addChat(user) {
 		var sendto = $("#sendto");
-		var receive = sendto.text() == "全体成员" ? "" : sendto.text() + ",";
+		var receive = sendto.text() == "在线客服" ? "" : sendto.text() + ",";
 		if (receive.indexOf(user) == -1) { //排除重复
 			sendto.text(receive + user);
 			$("#message").attr("placeholder", '与' + receive + user + "已建立聊天通道,等待输入中...");

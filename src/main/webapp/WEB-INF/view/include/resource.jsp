@@ -3,6 +3,7 @@
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" href="${ctx}/static/plugins/amaze/css/amazeui.min.css">
 <link rel="stylesheet" href="${ctx}/static/plugins/amaze/css/admin.css">
+<link rel="stylesheet" href="${ctx}/static/layui/css/layui.css" media="all">
 <link rel="stylesheet" href="${ctx}/static/plugins/contextjs/css/context.standalone.css">
 <script src="${ctx}/static/plugins/jquery/jquery-2.1.4.min.js"></script>
 <script src="${ctx}/static/plugins/amaze/js/amazeui.min.js"></script>
